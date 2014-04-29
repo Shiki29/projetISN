@@ -19,7 +19,7 @@ void draw() { //s'applique 30 fois par secondes
   int largeurColonne = width/6-2;
   int hauteurRangee = height/6-2;
 
-  //////////////// Dessiner la grille du fond /////////////
+  //////////////// Dessinfepjdo fond /////////////
   for(int i=0 ; i < 6 ; i++){ 
     for(int j=0 ; j < 6 ; j++){ 
       int x = i*largeurColonne+10;
