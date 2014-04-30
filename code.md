@@ -1,4 +1,4 @@
-int x1=50;
+int x1=200;
 int y1=100;
 int x2=200;
 int y2=250;
@@ -37,21 +37,32 @@ rect(x2, y2, l, h);
 }
 
 void mouseDragged() { //s'applique quand la souris est tirée
+
+  // Partie pour la voiture 1:
   if (mouseX>x1 && mouseX<x1+h && mouseY>y1 && mouseY<y1+l){
     //x1=mouseX-(h/2);
     y1=mouseY-(l/2);
   }
+  //Partie pour la voiture 2 :
   if (mouseX>x2 && mouseX<x2+l && mouseY>y2 && mouseY<y2+h){
-   if (x2 < x1+h && y2+h > y1 && y2 < y1+l){
-    x2=x2+1;
+   if (x2>x1){
+     if (x2 < x1+h && y2+h > y1 && y2 < y1+l){
+      x2=x2+1;
+     }
+     else {
+       x2=mouseX-(l/2);
+      //y2=mouseY-(h/2);
+     }
    }
-   else {
-     
-     x2=mouseX-(l/2);
-    //y2=mouseY-(h/2);
-   }
+   else{
+     if (x2+l > x1 && y2+h > y1 && y2 < y1+l){
+       x2=x2-1;
+     }
+     else {
+       x2=mouseX-(l/2);
+      //y2=mouseY-(h/2);
+     }
 
+    }
   }
-
-  }
- 
+}
