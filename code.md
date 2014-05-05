@@ -34,9 +34,7 @@ rect(x1, y1, h, l);
 fill (0,255,0);
 rect(x2, y2, l, h);
 
-if (x2 < x1+h && y2+h > y1 && y2 < y1+l){
-      x2=x2+1;
-     }
+
 
 }
 
