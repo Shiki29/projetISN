@@ -1,9 +1,9 @@
-int x1=200;
-int y1=100;
-int x2=200;
-int y2=250;
-int l=100;
-int h=40;
+int x1=77;  //En haut à droite (13;13)    +  64
+int y1=13;
+int x2=77;
+int y2=269;
+int l=119;
+int h=55;
 
 void setup() {
   size(400, 400);
@@ -33,6 +33,10 @@ fill (255,0,0);
 rect(x1, y1, h, l);
 fill (0,255,0);
 rect(x2, y2, l, h);
+
+if (x2 < x1+h && y2+h > y1 && y2 < y1+l){
+      x2=x2+1;
+     }
 
 }
 
