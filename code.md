@@ -1,7 +1,7 @@
-int x1=77;  //En haut à droite (13;13)    +  64
+int x1=141;  //En haut à droite (13;13)    +  64
 int y1=13;
 int x2=77;
-int y2=269;
+int y2=205;
 int l=119;
 int h=55;
 
@@ -34,6 +34,10 @@ rect(x1, y1, h, l);
 fill (0,255,0);
 rect(x2, y2, l, h);
 
+//VICTOIRE !
+if (333<x2+l && x2+l<397){
+  background(133,158,165); 
+}
 
 
 }
@@ -42,8 +46,26 @@ void mouseDragged() { //s'applique quand la souris est tirée
 
   // Partie pour la voiture 1:
   if (mouseX>x1 && mouseX<x1+h && mouseY>y1 && mouseY<y1+l){
-    //x1=mouseX-(h/2);
-    y1=mouseY-(l/2);
+   if (y1>y2){
+     if (y1 < y2+h && x1+h > x2 && x1 < x2+l){
+      y1=y1+1;
+     }
+     else {
+      //x1=mouseX-(h/2);
+      y1=mouseY-(l/2);
+     }
+   }
+   else{
+     if (y1+l > y2 && x1+h > x2 && x1 < x2+l){
+       y1=y1-1;
+     }
+     else {
+      //x1=mouseX-(h/2);
+      y1=mouseY-(l/2);
+     }
+
+    }
+    
   }
   //Partie pour la voiture 2 :
   if (mouseX>x2 && mouseX<x2+l && mouseY>y2 && mouseY<y2+h){
