@@ -1,13 +1,25 @@
-int x1=141;  //En haut à droite (13;13)    +  64
-int y1=13;
-int x2=13;
-int y2=205;
-int x3=141;
-int y3=205;
-int x4=269;
-int y4=205;
-int l=119;
+int xCJaune=141;  //En haut à droite (13;13)    +  64
+int yCJaune=13;
+
+int xVRouge=13;
+int yVRouge=141;
+
+int xVVerte=269;
+int yVVerte=13;
+
+int xCMauve=13;
+int yCMauve=205;
+
+int xCBleu=333;
+int yCBleu=205;
+
+int lv=119;
+
+int lc=183;
+
 int h=55;
+
+boolean niveau1 = true;
 
 void setup() {
   size(400, 400);
@@ -16,7 +28,22 @@ void setup() {
 
 void draw() { //s'applique 30 fois par secondes
 
-// /!\ Trouvé sur l'internet /!\
+  dessiner();
+
+
+if (niveau1 = true){
+  
+  niveau1();
+  
+}
+
+
+
+
+}
+void dessiner() {
+  
+  // /!\ Trouvé sur l'internet /!\
   background(175); // couleur de l'arriere-plan
   
   fill(200);
@@ -31,121 +58,94 @@ void draw() { //s'applique 30 fois par secondes
       rect( x+1 , y+1 , largeurColonne-5 , hauteurRangee-5 );
     }
   }
+}
 // /!\ Fin du Trouvé sur l'internet /!\
+void niveau1() {
+
+fill (241,250,18);
+rect(xCJaune, yCJaune, h, lc);
 
 fill (255,0,0);
-rect(x1, y1, h, l);
-fill (0,255,0);
-rect(x2, y2, l, h);
-fill (0,0,255);
-rect(x3,y3,l,h);
-fill (235,125,255);
-rect(x4,y4,l,h);
+rect(xVRouge, yVRouge, lv, h);
+
+fill (0,162,20);
+rect(xVVerte,yVVerte,lv,h);
+
+fill (173,51,211);
+rect(xCMauve,yCMauve,lc,h);
+
+fill (0,10,245);
+rect(xCBleu,yCBleu,h,lc);
 
 //VICTOIRE !
-if (333<x2+l && x2+l<397){
+if (333<xVRouge+lv && xVRouge+lv<397){
   background(133,158,165); 
+  delay(3000);
+  background(255,0,0);
 }
 
 
-}
 
-void mouseDragged() { //s'applique quand la souris est tirée
+if (mousePressed){
 
-  // Partie pour la voiture 1:
-  if (mouseX>x1 && mouseX<x1+h && mouseY>y1 && mouseY<y1+l){
-     if (y1 > y2 && y1 < y2+h && x1+h > x2 && x1 < x2+l || y1> y3 && y1 < y3+h && x1+h > x3 && x1 < x3+l){
-      y1=y1+1;
-     }
-
-     else if (y1 < y2 && y1+l > y2 && x1+h > x2 && x1 < x2+l || y1 < y3 && y1+l > y3 && x1+h > x3 && x1 < x3+l){
-       y1=y1-1;
-     }
-     else {
-      y1=mouseY-(l/2);
-     }
-
-  }
-  //Partie pour la voiture 2 :
-  if (mouseX>x2 && mouseX<x2+l && mouseY>y2 && mouseY<y2+h){
-     if (x2 > x1 && x2 < x1+h && y2+h > y1 && y2 < y1+l){
-      x2=x2+1;
-     }
-
-   else if (x2 < x1 && x2+l > x1 && y2+h > y1 && y2 < y1+l || x2+l>x3){
-       x2=x2-1;
-     }
-     else {
-       x2=mouseX-(l/2);
-     }
-
-  }
-  
- //Partie voiture 3 :
- if (mouseX>x3 && mouseX<x3+l && mouseY>y3 && mouseY<y3+h){
-     if (x3 > x1 && x3 < x1+h && y3+h > y1 && y3 < y1+l || x3<x2+l){
-      x3=x3+1;
-     }
-     else if (x3 < x1 && x3+l > x1 && y3+h > y1 && y3 < y1+l){
-       x3=x3-1;
-     }
-     else {
-       x3=mouseX-(l/2);
-     }
-
-    }
-  
-
-
-}
-
-
-/* VOITURE VERTICALE PAR RAPPORT A VOITURE HORIZONTALE
-
-
-  if (mouseX>xVerti && mouseX<xVerti+h && mouseY>yVerti && mouseY<yVerti+l){
-   if (yVerti>yHori){
-     if (yVerti < yHori+h && xVerti+h > xHori && xVerti < xHori+l){
-      yVerti=yVerti+1;
-     }
-     else {
-      yVerti=mouseY-(l/2);
-     }
-   }
-   else{
-     if (yVerti+l > yHori && xVerti+h > xHori && xVerti < xHori+l){
-       yVerti=yVerti-1;
-     }
-     else {
-      yVerti=mouseY-(l/2);
-     }
-
-    }
-    
-  }
-  
-  */
-  
-/* VOITURE HORIZONTALE PAR RAPPORT A VOITURE VERTICALE
-
- if (mouseX>xHori && mouseX<xHori+l && mouseY>yHori && mouseY<yHori+h){
-   if (xHori>xVerti){
-     if (xHori < xVerti+h && yHori+h > yVerti && yHori < yVerti+l){
-      xHori=xHori+1;
-     }
-     else {
-       xHori=mouseX-(l/2);
-     }
-   }
-   else{
-     if (xHori+l > x1 && yHori+h > yVerti && yHori < yVerti+l){
-       xHori=xHori-1;
-     }
-     else {
-       xHori=mouseX-(l/2);
-     }
-
+  // Partie Camion Jaune:
+  if (mouseX>xCJaune && mouseX<xCJaune+h && mouseY>yCJaune && mouseY<yCJaune+lv){
+    if (mouseY-(lc/2) > 11 && mouseY-(lc/2)+lc < 391){
+      if (mouseY-(lc/2)+lc < yVRouge || mouseY-(lc/2) > yVRouge+h || xCJaune+h < xVRouge || xCJaune > xVRouge+lv){
+        if(mouseY-(lc/2)+lc < yCMauve || mouseY-(lc/2) > yCMauve+h || xCJaune+h < xCMauve || xCJaune > xCMauve+lc){
+          if(mouseY-(lc/2)+lc < yVVerte || mouseY-(lc/2) > yVVerte+h || xCJaune+h < xVVerte || xCJaune > xVVerte+lv){
+            yCJaune=mouseY-(lc/2);
+          }
+        }
+      }
     }
   }
+  
+  // Partie Camion Bleu:
+  if (mouseX>xCBleu && mouseX<xCBleu+h && mouseY>yCBleu && mouseY<yCBleu+lv){
+    if (mouseY-(lc/2) > 11 && mouseY-(lc/2)+lc < 391){
+      if (mouseY-(lc/2)+lc < yVRouge || mouseY-(lc/2) > yVRouge+h || xCBleu+h < xVRouge || xCBleu > xVRouge+lv){
+        if(mouseY-(lc/2)+lc < yCMauve || mouseY-(lc/2) > yCMauve+h || xCBleu+h < xCMauve || xCBleu > xCMauve+lc){
+          if(mouseY-(lc/2)+lc < yVVerte || mouseY-(lc/2) > yVVerte+h || xCBleu+h < xVVerte || xCBleu > xVVerte+lv){
+            yCBleu=mouseY-(lc/2);
+          }
+        }
+      }
+    }
+  }
+ 
+  //Partie Voiture Rouge :
+  if (mouseX>xVRouge && mouseX<xVRouge+lv && mouseY>yVRouge && mouseY<yVRouge+h){
+    if (mouseX-(lv/2) > 11 && mouseX-(lv/2)+lv < 391){
+      if (mouseX-(lv/2)+lv < xCJaune || mouseX-(lv/2) > xCJaune+h || yVRouge+h < yCJaune || yVRouge > yCJaune+lc){
+        if (mouseX-(lv/2)+lv < xCBleu || mouseX-(lv/2) > xCBleu+h || yVRouge+h < yCBleu || yVRouge > yCBleu+lc){
+          xVRouge=mouseX-(lv/2);
+        }
+      }
+    }
+  }
+  
+ //Partie Voiture Verte :
+ if (mouseX>xVVerte && mouseX<xVVerte+lv && mouseY>yVVerte && mouseY<yVVerte+h){
+    if (mouseX-(lv/2) > 11 && mouseX-(lv/2)+lv < 391){
+      if (mouseX-(lv/2)+lv < xCJaune || mouseX-(lv/2) > xCJaune+h || yVVerte+h < yCJaune || yVVerte > yCJaune+lc){
+        if (mouseX-(lv/2)+lv < xCBleu || mouseX-(lv/2) > xCBleu+h || yVVerte+h < yCBleu || yVVerte > yCBleu+lc){
+          xVVerte=mouseX-(lv/2);
+        }
+      }
+    }
+  }
+ 
+  //Partie Camion Mauve :
+ if (mouseX>xCMauve && mouseX<xCMauve+lv && mouseY>yCMauve && mouseY<yCMauve+h){
+    if (mouseX-(lc/2) > 11 && mouseX-(lc/2)+lc < 391){
+      if (mouseX-(lc/2)+lc < xCJaune || mouseX-(lc/2) > xCJaune+h || yCMauve+h < yCJaune || yCMauve > yCJaune+lc){
+        if (mouseX-(lc/2)+lc < xCBleu || mouseX-(lc/2) > xCBleu+h || yCMauve+h < yCBleu || yCMauve > yCBleu+lc){
+          xCMauve=mouseX-(lc/2);
+        }
+      }
+    }
+  }
+  
 }
-*/
+}
